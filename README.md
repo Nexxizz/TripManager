@@ -1,6 +1,6 @@
-# Travel Planner
+# Trip Manager
 
-Die Travel Planner App ist eine Anwendung zur Planung Ihrer Reisen. Sie können verschiedene Reiseziele hinzufügen, diese mit Aktivitäten und Fotos versehen und den Zeitraum Ihres Aufenthalts festlegen. Die App ist in zwei Hauptteile unterteilt: das Backend, das in TypeScript geschrieben und mit Mikro-ORM und Express.js betrieben wird, und das Frontend, das mit React und TypeScript erstellt wurde.
+Die Trip Manager App ist eine Anwendung zur Planung Ihrer Reisen. Sie können verschiedene Reiseziele hinzufügen, diese mit Aktivitäten und Fotos versehen und den Zeitraum Ihres Aufenthalts festlegen. Die App ist in zwei Hauptteile unterteilt: das Backend, das in TypeScript geschrieben und mit Mikro-ORM und Express.js betrieben wird, und das Frontend, das mit React und TypeScript erstellt wurde.
 
 ## Funktionalitäten
 
