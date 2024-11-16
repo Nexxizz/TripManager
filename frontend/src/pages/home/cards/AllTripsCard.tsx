@@ -23,7 +23,7 @@ export const AllTripsCard = ({
             // For each destination of the trip, fetch all trips
             for (let i = 0; i < trip.destinations.length; i++) {
                 const destinationName = trip.destinations[i].name;
-                const response = await fetch(`http://localhost:3000/trips/GetTripsByDestination/${destinationName}`);
+                const response = await fetch(`https://tripmanager.onrender.com/trips/GetTripsByDestination/${destinationName}`);
                 const destinationTrips = await response.json();
 
                 // If the destination has no other trips, add it to the list
@@ -40,7 +40,7 @@ export const AllTripsCard = ({
         }
 
         // If all destinations have other trips, delete the trip
-        const response = await fetch(`http://localhost:3000/trips/DeleteTrip/${id}`, {
+        const response = await fetch(`https://tripmanager.onrender.com/trips/DeleteTrip/${id}`, {
             method: 'DELETE',
         });
         if (response.ok) {

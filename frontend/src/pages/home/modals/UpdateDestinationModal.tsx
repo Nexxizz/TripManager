@@ -26,7 +26,7 @@ function UpdateDestination({ destination }: { destination: Destination }) {
         if (newValue.trim() === initialName.trim()) return;
 
         try {
-            const response = await fetch(`http://localhost:3000/destinations/GetDestinationByName/${newValue}`);
+            const response = await fetch(`https://tripmanager.onrender.com/destinations/GetDestinationByName/${newValue}`);
             if (response.ok) {
                 const data = await response.json();
                 if (data.name) {
@@ -67,7 +67,7 @@ function UpdateDestination({ destination }: { destination: Destination }) {
                             })}
                             onSubmit={(values, { setSubmitting }) => {
                                 console.log(values);
-                                fetch(`http://localhost:3000/destinations/UpdateDestination/${destination.id}`, {
+                                fetch(`https://tripmanager.onrender.com/destinations/UpdateDestination/${destination.id}`, {
                                     method: 'PUT',
                                     headers: {
                                         'Content-Type': 'application/json',

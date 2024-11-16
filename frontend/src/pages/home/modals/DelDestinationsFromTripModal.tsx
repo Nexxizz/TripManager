@@ -10,7 +10,7 @@ function DelDestinationsModal({ tripId }: { tripId: string }) {
     // Fetch all destinations when the component mounts
     useEffect(() => {
         // Fetch the current destinations of the trip
-        fetch(`http://localhost:3000/trips/GetTripDestinations/${tripId}`)
+        fetch(`https://tripmanager.onrender.com/trips/GetTripDestinations/${tripId}`)
             .then(response => response.json())
             .then(currentDestinations => setDestinations(currentDestinations));
     }, []);
@@ -50,7 +50,7 @@ function DelDestinationsModal({ tripId }: { tripId: string }) {
         for (let i = 0; i < selectedDestinations.length; i++) {
             const destinationId = selectedDestinations[i];
             const destinationName = destinations.find(destination => destination.id === destinationId)?.name;
-            const response = await fetch(`http://localhost:3000/trips/GetTripsByDestination/${destinationName}`);
+            const response = await fetch(`https://tripmanager.onrender.com/trips/GetTripsByDestination/${destinationName}`);
             const destinationTrips = await response.json();
 
             // If the destination has no other trips, add it to the list
@@ -66,7 +66,7 @@ function DelDestinationsModal({ tripId }: { tripId: string }) {
         }
 
         // If no destination has only this trip, remove the destinations from the trip
-        fetch(`http://localhost:3000/trips/RemoveMultipleDestinationsFromTrip/${tripId}`, {
+        fetch(`https://tripmanager.onrender.com/trips/RemoveMultipleDestinationsFromTrip/${tripId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

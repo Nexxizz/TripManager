@@ -8,7 +8,7 @@ export const AllDestinationsCards = ({
     data: Destination[];
 }) => {
     const deleteDestination = async (id: string) => {
-        const response = await fetch(`http://localhost:3000/destinations/DeleteDestination/${id}`, {
+        const response = await fetch(`https://tripmanager.onrender.com/destinations/DeleteDestination/${id}`, {
             method: 'DELETE',
         });
         if (response.ok) {

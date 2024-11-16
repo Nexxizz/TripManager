@@ -26,7 +26,7 @@ export const AddDestination = () => {
 
     useEffect(() => {
         const fetchTrips = async () => {
-            const response = await fetch('http://localhost:3000/trips/GetAllTrips');
+            const response = await fetch('https://tripmanager.onrender.com/trips/GetAllTrips');
             const data = await response.json();
             setTrips(data);
         };
@@ -50,7 +50,7 @@ export const AddDestination = () => {
             trips: tripObjects,  // Send the trip objects with only the id field
         };
 
-        const response = await fetch('http://localhost:3000/destinations/CreateDestination', {
+        const response = await fetch('https://tripmanager.onrender.com/destinations/CreateDestination', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ export const AddDestination = () => {
         if (newValue.trim() === '') return;
 
         try {
-            const response = await fetch(`http://localhost:3000/destinations/GetDestinationByName/${newValue}`);
+            const response = await fetch(`https://tripmanager.onrender.com/destinations/GetDestinationByName/${newValue}`);
             if (response.ok) {
                 const data = await response.json();
                 if (data.name) {

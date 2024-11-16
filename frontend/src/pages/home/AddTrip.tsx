@@ -23,7 +23,7 @@ export const AddTrip = () => {
 
     const addTrip = async (trip: Trip) => {
         console.log(trip)
-        const response = await fetch('http://localhost:3000/trips/CreateTrip', {
+        const response = await fetch('https://tripmanager.onrender.com/trips/CreateTrip', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ export const AddTrip = () => {
         if (newValue.trim() === '') return;
 
         try {
-            const response = await fetch(`http://localhost:3000/trips/GetTripByName/${newValue}`);
+            const response = await fetch(`https://tripmanager.onrender.com/trips/GetTripByName/${newValue}`);
             if (response.ok) {
                 const data = await response.json();
                 if (data.name) {

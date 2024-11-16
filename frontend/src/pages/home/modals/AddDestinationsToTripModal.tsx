@@ -9,7 +9,7 @@ function AddDestinationsModal({ tripId }: { tripId: string }) {
 
     // Fetch all destinations when the component mounts
     useEffect(() => {
-        fetch('http://localhost:3000/destinations/GetAllDestinations')
+        fetch('https://tripmanager.onrender.com/destinations/GetAllDestinations')
             .then(response => response.json())
             .then(data => setDestinations(data));
     }, []);
@@ -38,7 +38,7 @@ function AddDestinationsModal({ tripId }: { tripId: string }) {
 
     const handleAddDestinations = async () => {
         // Fetch the current destinations of the trip
-        const response = await fetch(`http://localhost:3000/trips/GetTripDestinations/${tripId}`);
+        const response = await fetch(`https://tripmanager.onrender.com/trips/GetTripDestinations/${tripId}`);
         const currentDestinations = await response.json();
 
         // Map currentDestinations to an array of destination IDs
@@ -54,7 +54,7 @@ function AddDestinationsModal({ tripId }: { tripId: string }) {
             setErrorMessage(`The following destinations are already part of the trip: ${alreadyAddedDestinations.join(', ')}`);
             return;
         }
-        fetch(`http://localhost:3000/trips/AddMultipleDestinationsToTrip/${tripId}`, {
+        fetch(`https://tripmanager.onrender.com/trips/AddMultipleDestinationsToTrip/${tripId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

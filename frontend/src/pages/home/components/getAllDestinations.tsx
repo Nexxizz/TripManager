@@ -8,7 +8,7 @@ export const GetAllDestinations = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:3000/destinations/GetAllDestinations');
+            const response = await fetch('https://tripmanager.onrender.com/destinations/GetAllDestinations');
             const data = await response.json();
             setData(data);
         };

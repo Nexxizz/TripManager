@@ -25,7 +25,7 @@ export const Navigation = () => {
                 query = convertDate(searchQuery);
             }
 
-            const response = await axios.get(`http://localhost:3000/trips/SearchTrips?q=${query}`);
+            const response = await axios.get(`https://tripmanager.onrender.com/trips/SearchTrips?q=${query}`);
 
             if (Array.isArray(response.data)) {
                 setSearchResults(response.data);
