@@ -10,7 +10,7 @@ import cors from 'cors';
 
 const app = express();
 app.use(cors());
-const PORT = 10000;
+const PORT = parseInt(process.env.PORT || '3000', 10);
 app.use(express.json()); // for parsing application/json
 
 export const DI = {} as {
@@ -36,8 +36,8 @@ const initializeServer = async () => {
     app.use('/destinations', destinationRouter);
 
 
-    app.listen(PORT, () => {
-        console.log(`Server running http://localhost:${PORT}`);
+    app.listen(PORT, '0.0.0.0', () => {
+            console.log(`Server is running on port ${PORT}`);
     });
 };
 
