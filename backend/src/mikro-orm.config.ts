@@ -8,6 +8,11 @@ dotenv.config();
 export default defineConfig({
     entities: [Trip, Destination],
     clientUrl: process.env.DATABASE_URL,
-    debug: process.env.NODE_ENV !== 'production',
+    debug: false,
     driver: PostgreSqlDriver,
+    driverOptions: {
+        ssl: {
+            rejectUnauthorized: false, // Allows self-signed certificates
+        },
+    },
 });
