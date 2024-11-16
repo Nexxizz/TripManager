@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "tsc-watch --onSuccess \"node dist/index\"",
-    "schema:fresh": "npx mikro-orm schema:fresh -r"
+    "schema:fresh": "npx mikro-orm schema:fresh -r",
+    "deploy": "echo \"Deploying project...\" && npm run build && npm run start"
   },
   "devDependencies": {
     "@mikro-orm/cli": "^6.2.4",
