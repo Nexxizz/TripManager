@@ -10,4 +10,11 @@ export default defineConfig({
     clientUrl: process.env.DATABASE_URL,
     debug: false,
     driver: PostgreSqlDriver,
+    driverOptions: {
+        connection: {
+            ssl: {
+                rejectUnauthorized: false
+            }
+        }
+    }
 });
