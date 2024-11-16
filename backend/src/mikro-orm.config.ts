@@ -16,5 +16,15 @@ export default defineConfig({
                 rejectUnauthorized: false
             }
         }
+    },
+    schemaGenerator: {
+        disableForeignKeys: false,
+        createForeignKeyConstraints: true,
+    },
+    replicas: [],
+    allowGlobalContext: true,
+    migrations: {
+        safe: true,
+        disableForeignKeys: false
     }
 });
