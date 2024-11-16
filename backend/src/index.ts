@@ -10,7 +10,7 @@ import cors from 'cors';
 
 const app = express();
 app.use(cors());
-const PORT = 3000;
+const PORT = 10000;
 app.use(express.json()); // for parsing application/json
 
 export const DI = {} as {
