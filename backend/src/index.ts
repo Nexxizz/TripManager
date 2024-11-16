@@ -24,23 +24,42 @@ export const DI = {} as {
 
 
 const initializeServer = async () => {
-    const orm = await MikroORM.init(mikroOrmConfig);
-    const em = orm.em;
+    try {
+        const orm = await MikroORM.init(mikroOrmConfig);
+        const em = orm.em;
 
-    DI.orm = orm;
-    DI.em = em;
-    DI.tripRepository = em.getRepository(Trip);
-    DI.destinationRepository = em.getRepository(Destination);
+        DI.orm = orm;
+        DI.em = em;
+        DI.tripRepository = em.getRepository(Trip);
+        DI.destinationRepository = em.getRepository(Destination);
 
-    app.use('/trips', tripRouter);
-    app.use('/destinations', destinationRouter);
+        app.use('/trips', tripRouter);
+        app.use('/destinations', destinationRouter);
 
-
-    app.listen(PORT, '0.0.0.0', () => {
+        const server = app.listen(PORT, '0.0.0.0', () => {
             console.log(`Server is running on port ${PORT}`);
-    });
+        });
+
+        DI.server = server;
+
+        // Graceful shutdown
+        process.on('SIGTERM', () => {
+            console.log('SIGTERM signal received: closing HTTP server');
+            server.close(() => {
+                orm.close().then(() => {
+                    console.log('HTTP server closed');
+                    process.exit(0);
+                });
+            });
+        });
+
+    } catch (error) {
+        console.error('Server initialization failed:', error);
+        process.exit(1);
+    }
 };
 
 initializeServer().catch((err) => {
-    console.error(err);
+    console.error('Fatal error:', err);
+    process.exit(1);
 });
