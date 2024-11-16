@@ -10,9 +10,4 @@ export default defineConfig({
     clientUrl: process.env.DATABASE_URL,
     debug: false,
     driver: PostgreSqlDriver,
-    driverOptions: {
-        ssl: {
-            rejectUnauthorized: false, // Allows self-signed certificates
-        },
-    },
 });
